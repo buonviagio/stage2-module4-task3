@@ -14,7 +14,6 @@ public class Rectangle implements Observable {
 
     // Write your code here!
     List<Observer> observes = new ArrayList<>();
-    //RectangleValues rectangleValues = new RectangleValues(sideA * sideB, 2 * (sideA * sideB));
     public Rectangle(int id, double sideA, double sideB) {
         this.id = id;
         this.sideA = sideA;

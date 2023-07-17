@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 public class RectangleRepository {
     private static RectangleRepository instance;
     private List<Rectangle> rectangles;
@@ -37,8 +38,4 @@ public class RectangleRepository {
         return Collections.unmodifiableList(rectangles);
     }
 
-    public static void main(String[] args) {
-        RectangleRepository rectangleRepository = RectangleRepository.getInstance();
-        Rectangle rectangle1 = rectangleRepository.getRectangle(1);
-    }
 }
