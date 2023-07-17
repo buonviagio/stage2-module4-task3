@@ -5,6 +5,7 @@ public abstract class AbstractTextComponent {
     private int size;
 
     public AbstractTextComponent(TextComponentType componentType) {
+
         this.componentType = componentType;
     }
 

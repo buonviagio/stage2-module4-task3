@@ -36,4 +36,9 @@ public class RectangleRepository {
     public List<Rectangle> getRectangles() {
         return Collections.unmodifiableList(rectangles);
     }
+
+    public static void main(String[] args) {
+        RectangleRepository rectangleRepository = RectangleRepository.getInstance();
+        Rectangle rectangle1 = rectangleRepository.getRectangle(1);
+    }
 }

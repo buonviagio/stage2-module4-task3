@@ -9,6 +9,7 @@ public abstract class AbstractTextParser {
     }
 
     public AbstractTextParser(AbstractTextParser nextParser) {
+
         this.nextParser = nextParser;
     }
 
@@ -16,6 +17,7 @@ public abstract class AbstractTextParser {
     public abstract void parse(AbstractTextComponent abstractTextComponent, String string);
 
     protected void setNextParser(AbstractTextParser nextParser) {
+
         this.nextParser = nextParser;
     }
 }
