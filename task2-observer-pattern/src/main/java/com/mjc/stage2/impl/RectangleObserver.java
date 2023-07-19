@@ -15,11 +15,11 @@ public class RectangleObserver implements Observer {
         int id = rectangle.getId();
         RectangleWarehouse rectangleWarehouse = RectangleWarehouse.getInstance();
         if (rectangleWarehouse.get(id) == null) {
-            rectangleWarehouse.put(id, new RectangleValues(sideA * sideB, 2 * (sideA * sideB)));
+            rectangleWarehouse.put(id, new RectangleValues(sideA * sideB, 2 * (sideA + sideB)));
         } else {
             RectangleValues rectangleValues = rectangleWarehouse.get(id);
             rectangleValues.setSquare(sideA * sideB);
-            rectangleValues.setPerimeter(2 * (sideA * sideB));
+            rectangleValues.setPerimeter(2 * (sideA + sideB));
         }
     }
     // Write your code here!

@@ -1,10 +1,5 @@
 package com.mjc.stage2.reader.impl;
 
-
-import com.mjc.stage2.entity.AbstractTextComponent;
-import com.mjc.stage2.entity.SymbolLeaf;
-import com.mjc.stage2.entity.TextComponent;
-import com.mjc.stage2.entity.TextComponentType;
 import com.mjc.stage2.exception.HandlingException;
 import com.mjc.stage2.reader.DataReader;
 import com.mjc.stage2.validator.impl.FileValidatorImpl;
@@ -42,37 +37,4 @@ public class DataReaderImpl implements DataReader {
         return stringBuilder.toString();
     }
 
-    public static void main(String[] args) {
-        try {
-            String fileData = new DataReaderImpl().readFile("/Users/DimaHeinz/Desktop/test/stage2-module4-task3/task3-handling/src/main/resources/data/textdata.txt");
-            System.out.println(fileData);
-        } catch (HandlingException e) {
-            throw new RuntimeException(e);
-        }
-
-        SymbolLeaf s1 = new SymbolLeaf(TextComponentType.SYMBOL);
-        s1.setChar('g');
-        AbstractTextComponent abstractTextComponent1 = new TextComponent(TextComponentType.SYMBOL);
-        abstractTextComponent1.add(s1);
-
-        SymbolLeaf s11 = new SymbolLeaf(TextComponentType.SENTENCE);
-        s11.setChar('H');
-        SymbolLeaf s12 = new SymbolLeaf(TextComponentType.SENTENCE);
-        s12.setChar('E');
-        SymbolLeaf s13 = new SymbolLeaf(TextComponentType.SENTENCE);
-        s13.setChar('L');
-        SymbolLeaf s14 = new SymbolLeaf(TextComponentType.SENTENCE);
-        s14.setChar('L');
-        SymbolLeaf s15 = new SymbolLeaf(TextComponentType.SENTENCE);
-        s15.setChar('O');
-        AbstractTextComponent abstractTextComponent2 = new TextComponent(TextComponentType.SENTENCE);
-        abstractTextComponent2.add(s11);
-        abstractTextComponent2.add(s12);
-        abstractTextComponent2.add(s13);
-        abstractTextComponent2.add(s14);
-        abstractTextComponent2.add(s15);
-        System.out.println(abstractTextComponent2.operation());
-
-
-    }
 }

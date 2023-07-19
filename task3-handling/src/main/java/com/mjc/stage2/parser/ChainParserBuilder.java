@@ -11,12 +11,11 @@ public class ChainParserBuilder {
 
     public ChainParserBuilder setParser(AbstractTextParser abstractTextParser) {
         // Write your code here!
-
+        parsers.add(abstractTextParser);
         return this;
     }
 
     public AbstractTextParser build() {
-        // Write your code here!
-        return new WordParser(new LexemeParser(null));
+        return new LexemeParser(new WordParser(null));
     }
 }

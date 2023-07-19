@@ -2,6 +2,7 @@ package com.mjc.stage2.parser;
 
 
 import com.mjc.stage2.entity.AbstractTextComponent;
+import com.mjc.stage2.entity.SymbolLeaf;
 import com.mjc.stage2.entity.TextComponentType;
 
 import java.util.regex.Matcher;
@@ -9,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class WordParser extends AbstractTextParser {
     // Write your code here!
-    private static final String WORD_REGEX = "\\w[\\w!=?():]+";
+    private static final String LETTER_REGEX = "\\W";
 
     public WordParser(AbstractTextParser nextParser) {
         super(nextParser);
@@ -17,14 +18,17 @@ public class WordParser extends AbstractTextParser {
 
     @Override
     public void parse(AbstractTextComponent abstractTextComponent, String string) {
-        String [] array = string.split(TextComponentType.SENTENCE.getDelimiter());
 
-
-
-        Pattern pattern = Pattern.compile(WORD_REGEX);
+        Pattern pattern = Pattern.compile(LETTER_REGEX);
         Matcher matcher = pattern.matcher(string);
-        while (matcher.find()){
+        SymbolLeaf sl = new SymbolLeaf(TextComponentType.SYMBOL);
 
+        String tmp;
+        while (matcher.find()) {
+            tmp = matcher.group();
+            sl.setChar(tmp.charAt(0));
+            abstractTextComponent.add(sl);
+            //System.out.println("WordParser ... " + tmp);
         }
     }
 }
