@@ -2,6 +2,7 @@ package com.mjc.stage2.parser;
 
 import com.mjc.stage2.entity.AbstractTextComponent;
 import com.mjc.stage2.entity.SymbolLeaf;
+import com.mjc.stage2.entity.TextComponent;
 import com.mjc.stage2.entity.TextComponentType;
 
 import java.util.regex.Matcher;
@@ -24,23 +25,28 @@ public class LexemeParser extends AbstractTextParser {
         Pattern pattern = Pattern.compile(WORD_REGEX);
         SymbolLeaf sl;
         for (String str : parts) {
-            nextParser.parse(abstractTextComponent, str);
+            //nextParser.parse(abstractTextComponent, str);
             Matcher matcher = pattern.matcher(str);
-            //sl = new SymbolLeaf(TextComponentType.WORD);
 
             if (matcher.find()) {
-                //System.out.println(matcher.group());
                 String[] s = str.split(TextComponentType.SYMBOL.getDelimiter());
-                sl = new SymbolLeaf(TextComponentType.WORD);
+                TextComponent textComponent = new TextComponent(TextComponentType.WORD);
+                abstractTextComponent.add(textComponent);
+
                 for (String value : s) {
-                    sl.setChar(value.charAt(0));
-                    abstractTextComponent.add(sl);
+                    char ch = value.charAt(0);
+                    sl = new SymbolLeaf(TextComponentType.WORD);
+                    sl.setChar(ch);
+                    textComponent.add(sl);
+                    //abstractTextComponent.add(sl);
                 }
             } else {
-                //System.out.println("LETTER " + str);
+                TextComponent textComponent = new TextComponent(TextComponentType.WORD);
+                abstractTextComponent.add(textComponent);
+                char ch = str.charAt(0);
                 sl = new SymbolLeaf(TextComponentType.SYMBOL);
-                sl.setChar(str.charAt(0));
-                abstractTextComponent.add(sl);
+                sl.setChar(ch);
+                textComponent.add(sl);
             }
         }
     }

@@ -15,9 +15,15 @@ public class TextComponent extends AbstractTextComponent {
     @Override
     public String operation() {
         StringBuilder stringBuilder = new StringBuilder();
+        TextComponent textComponent;
         for(int i = 0; i < size; i++){
-            SymbolLeaf symbolLeaf = (SymbolLeaf)componentList.get(i);
-            stringBuilder.append(symbolLeaf.getChar());
+            textComponent = (TextComponent) componentList.get(i);
+
+            for (AbstractTextComponent com :textComponent.componentList){
+                SymbolLeaf symbolLeaf = (SymbolLeaf) com;
+                stringBuilder.append(symbolLeaf.getChar());
+            }
+            //stringBuilder.append(" ");
         }
         return stringBuilder.toString();
     }

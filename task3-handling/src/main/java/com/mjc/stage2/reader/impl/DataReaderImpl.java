@@ -1,5 +1,6 @@
 package com.mjc.stage2.reader.impl;
 
+
 import com.mjc.stage2.exception.HandlingException;
 import com.mjc.stage2.reader.DataReader;
 import com.mjc.stage2.validator.impl.FileValidatorImpl;
@@ -36,5 +37,4 @@ public class DataReaderImpl implements DataReader {
         }
         return stringBuilder.toString();
     }
-
 }
