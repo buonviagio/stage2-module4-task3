@@ -1,7 +1,12 @@
 package com.mjc.stage2.reader.impl;
 
-
+import com.mjc.stage2.entity.TextComponent;
+import com.mjc.stage2.entity.TextComponentType;
 import com.mjc.stage2.exception.HandlingException;
+import com.mjc.stage2.parser.AbstractTextParser;
+import com.mjc.stage2.parser.ChainParserBuilder;
+import com.mjc.stage2.parser.LexemeParser;
+import com.mjc.stage2.parser.WordParser;
 import com.mjc.stage2.reader.DataReader;
 import com.mjc.stage2.validator.impl.FileValidatorImpl;
 
@@ -37,4 +42,5 @@ public class DataReaderImpl implements DataReader {
         }
         return stringBuilder.toString();
     }
+
 }

@@ -16,6 +16,11 @@ public class ChainParserBuilder {
     }
 
     public AbstractTextParser build() {
-        return new LexemeParser(new WordParser(null));
+        for (int i = 1; i < parsers.size(); i++){
+            AbstractTextParser parser = parsers.get(i - 1);
+            parser.setNextParser(parsers.get(i));
+        }
+        return parsers.get(0);
+        //return new LexemeParser(new WordParser(null));
     }
 }

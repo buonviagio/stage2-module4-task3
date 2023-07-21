@@ -23,7 +23,7 @@ public class TextComponent extends AbstractTextComponent {
                 SymbolLeaf symbolLeaf = (SymbolLeaf) com;
                 stringBuilder.append(symbolLeaf.getChar());
             }
-            //stringBuilder.append(" ");
+            stringBuilder.append(" ");
         }
         return stringBuilder.toString();
     }

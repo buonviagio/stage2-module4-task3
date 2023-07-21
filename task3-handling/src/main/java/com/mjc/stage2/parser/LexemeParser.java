@@ -14,39 +14,33 @@ public class LexemeParser extends AbstractTextParser {
 
     // Write your code here!
 
-
     public LexemeParser(AbstractTextParser nextParser) {
         super(nextParser);
     }
 
     @Override
     public void parse(AbstractTextComponent abstractTextComponent, String string) {
+        /*
+        String[] parts = string.split(LEXEME_REGEX);
+        for (String str : parts) {
+            nextParser.parse(abstractTextComponent, str);
+        }
+        */
         String[] parts = string.split(LEXEME_REGEX);
         Pattern pattern = Pattern.compile(WORD_REGEX);
-        SymbolLeaf sl;
+        Matcher matcher = pattern.matcher(string);
+        SymbolLeaf symbolLeaf;
+        TextComponent textComponent;
         for (String str : parts) {
-            //nextParser.parse(abstractTextComponent, str);
-            Matcher matcher = pattern.matcher(str);
-
             if (matcher.find()) {
-                String[] s = str.split(TextComponentType.SYMBOL.getDelimiter());
-                TextComponent textComponent = new TextComponent(TextComponentType.WORD);
-                abstractTextComponent.add(textComponent);
-
-                for (String value : s) {
-                    char ch = value.charAt(0);
-                    sl = new SymbolLeaf(TextComponentType.WORD);
-                    sl.setChar(ch);
-                    textComponent.add(sl);
-                    //abstractTextComponent.add(sl);
-                }
+                nextParser.parse(abstractTextComponent, str);
             } else {
-                TextComponent textComponent = new TextComponent(TextComponentType.WORD);
+                textComponent = new TextComponent(TextComponentType.SYMBOL);
                 abstractTextComponent.add(textComponent);
-                char ch = str.charAt(0);
-                sl = new SymbolLeaf(TextComponentType.SYMBOL);
-                sl.setChar(ch);
-                textComponent.add(sl);
+                char ch = string.charAt(0);
+                symbolLeaf = new SymbolLeaf(TextComponentType.SYMBOL);
+                symbolLeaf.setChar(ch);
+                textComponent.add(symbolLeaf);
             }
         }
     }
