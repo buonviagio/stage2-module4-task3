@@ -18,7 +18,6 @@ public class TextComponent extends AbstractTextComponent {
         TextComponent textComponent;
         AbstractTextComponent abstractTextComponent;
         for (int i = 0; i < size; i++) {
-            //textComponent = (TextComponent) componentList.get(i);
             abstractTextComponent = componentList.get(i);
             if (abstractTextComponent instanceof SymbolLeaf){
                 SymbolLeaf symbolLeaf = (SymbolLeaf) abstractTextComponent;

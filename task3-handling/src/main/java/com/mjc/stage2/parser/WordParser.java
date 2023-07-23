@@ -9,10 +9,6 @@ import com.mjc.stage2.entity.TextComponentType;
 public class WordParser extends AbstractTextParser {
     // Write your code here!
 
-    public WordParser(AbstractTextParser nextParser) {
-        super(nextParser);
-    }
-
     public WordParser() {
     }
 

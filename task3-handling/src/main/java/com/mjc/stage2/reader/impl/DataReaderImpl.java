@@ -1,12 +1,6 @@
 package com.mjc.stage2.reader.impl;
 
-import com.mjc.stage2.entity.TextComponent;
-import com.mjc.stage2.entity.TextComponentType;
 import com.mjc.stage2.exception.HandlingException;
-import com.mjc.stage2.parser.AbstractTextParser;
-import com.mjc.stage2.parser.ChainParserBuilder;
-import com.mjc.stage2.parser.LexemeParser;
-import com.mjc.stage2.parser.WordParser;
 import com.mjc.stage2.reader.DataReader;
 import com.mjc.stage2.validator.impl.FileValidatorImpl;
 
@@ -41,22 +35,5 @@ public class DataReaderImpl implements DataReader {
             stringBuilder.append(s).append("\n");
         }
         return stringBuilder.toString();
-    }
-    public static void main(String[] args) {
-        String fileData;
-        try {
-            fileData = new DataReaderImpl().readFile("/Users/DimaHeinz/Desktop/test/stage2-module4-task3/task3-handling/src/main/resources/data/textdata.txt");
-            System.out.println(fileData);
-        } catch (HandlingException e) {
-            throw new RuntimeException(e);
-        }
-        ChainParserBuilder chainParserBuilder = new ChainParserBuilder();
-        chainParserBuilder.setParser(new LexemeParser());
-        chainParserBuilder.setParser(new WordParser());
-
-        AbstractTextParser abstractTextParser = chainParserBuilder.build();
-        TextComponent textComponent = new TextComponent(TextComponentType.SENTENCE);
-        abstractTextParser.parse(textComponent, fileData);
-        System.out.println(textComponent.operation());
     }
 }

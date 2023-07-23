@@ -14,11 +14,6 @@ public class LexemeParser extends AbstractTextParser {
 
     // Write your code here!
 
-    public LexemeParser(AbstractTextParser nextParser) {
-        super(nextParser);
-    }
-
-
     public LexemeParser() {
     }
 
@@ -32,7 +27,6 @@ public class LexemeParser extends AbstractTextParser {
         for (String str : parts) {
 
             if (matcher.find()) {
-                System.out.println(str);
                 nextParser.parse(abstractTextComponent, str);
             } else {
                 char ch = string.charAt(0);
