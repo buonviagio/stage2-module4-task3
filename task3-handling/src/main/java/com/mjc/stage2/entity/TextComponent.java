@@ -16,12 +16,19 @@ public class TextComponent extends AbstractTextComponent {
     public String operation() {
         StringBuilder stringBuilder = new StringBuilder();
         TextComponent textComponent;
-        for(int i = 0; i < size; i++){
-            textComponent = (TextComponent) componentList.get(i);
-
-            for (AbstractTextComponent com :textComponent.componentList){
-                SymbolLeaf symbolLeaf = (SymbolLeaf) com;
+        AbstractTextComponent abstractTextComponent;
+        for (int i = 0; i < size; i++) {
+            //textComponent = (TextComponent) componentList.get(i);
+            abstractTextComponent = componentList.get(i);
+            if (abstractTextComponent instanceof SymbolLeaf){
+                SymbolLeaf symbolLeaf = (SymbolLeaf) abstractTextComponent;
                 stringBuilder.append(symbolLeaf.getChar());
+            } else {
+                textComponent = (TextComponent) abstractTextComponent;
+                for (AbstractTextComponent com : textComponent.componentList) {
+                    SymbolLeaf symbolLeaf = (SymbolLeaf) com;
+                    stringBuilder.append(symbolLeaf.getChar());
+                }
             }
             stringBuilder.append(" ");
         }

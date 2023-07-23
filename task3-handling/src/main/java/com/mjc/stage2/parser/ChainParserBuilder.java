@@ -20,6 +20,7 @@ public class ChainParserBuilder {
             AbstractTextParser parser = parsers.get(i - 1);
             parser.setNextParser(parsers.get(i));
         }
+        System.out.println("Size of parsersList is " + parsers.size());
         return parsers.get(0);
         //return new LexemeParser(new WordParser(null));
     }

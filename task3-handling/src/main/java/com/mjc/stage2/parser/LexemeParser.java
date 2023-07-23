@@ -18,29 +18,27 @@ public class LexemeParser extends AbstractTextParser {
         super(nextParser);
     }
 
+
+    public LexemeParser() {
+    }
+
     @Override
     public void parse(AbstractTextComponent abstractTextComponent, String string) {
-        /*
-        String[] parts = string.split(LEXEME_REGEX);
-        for (String str : parts) {
-            nextParser.parse(abstractTextComponent, str);
-        }
-        */
         String[] parts = string.split(LEXEME_REGEX);
         Pattern pattern = Pattern.compile(WORD_REGEX);
         Matcher matcher = pattern.matcher(string);
         SymbolLeaf symbolLeaf;
-        TextComponent textComponent;
+
         for (String str : parts) {
+
             if (matcher.find()) {
+                System.out.println(str);
                 nextParser.parse(abstractTextComponent, str);
             } else {
-                textComponent = new TextComponent(TextComponentType.SYMBOL);
-                abstractTextComponent.add(textComponent);
                 char ch = string.charAt(0);
                 symbolLeaf = new SymbolLeaf(TextComponentType.SYMBOL);
                 symbolLeaf.setChar(ch);
-                textComponent.add(symbolLeaf);
+                abstractTextComponent.add(symbolLeaf);
             }
         }
     }
