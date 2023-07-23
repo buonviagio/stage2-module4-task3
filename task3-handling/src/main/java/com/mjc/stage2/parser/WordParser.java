@@ -17,6 +17,19 @@ public class WordParser extends AbstractTextParser {
 
         SymbolLeaf symbolLeaf;
         TextComponent textComponent;
+
+        int length = string.length();
+        char[] symbol = new char[length];
+        string.getChars(0, length, symbol, 0);
+        textComponent = new TextComponent(TextComponentType.WORD);
+        abstractTextComponent.add(textComponent);
+        for (char c : symbol) {
+            symbolLeaf = new SymbolLeaf(TextComponentType.WORD);
+            symbolLeaf.setChar(c);
+            textComponent.add(symbolLeaf);
+        }
+
+        /*
         String[] symbols = string.split(TextComponentType.SYMBOL.getDelimiter());
         textComponent = new TextComponent(TextComponentType.WORD);
         abstractTextComponent.add(textComponent);
@@ -27,5 +40,7 @@ public class WordParser extends AbstractTextParser {
             symbolLeaf.setChar(ch);
             textComponent.add(symbolLeaf);
         }
+
+         */
     }
 }

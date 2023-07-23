@@ -19,7 +19,7 @@ public class TextComponent extends AbstractTextComponent {
         AbstractTextComponent abstractTextComponent;
         for (int i = 0; i < size; i++) {
             abstractTextComponent = componentList.get(i);
-            if (abstractTextComponent instanceof SymbolLeaf){
+            if (abstractTextComponent instanceof SymbolLeaf) {
                 SymbolLeaf symbolLeaf = (SymbolLeaf) abstractTextComponent;
                 stringBuilder.append(symbolLeaf.getChar());
             } else {
@@ -29,7 +29,9 @@ public class TextComponent extends AbstractTextComponent {
                     stringBuilder.append(symbolLeaf.getChar());
                 }
             }
-            stringBuilder.append(" ");
+            if (i < size-1) {
+                stringBuilder.append(" ");
+            }
         }
         return stringBuilder.toString();
     }
