@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 
 public class LexemeParser extends AbstractTextParser {
     private static final String LEXEME_REGEX = "\\s+";
-    //private static final String WORD_REGEX = "\\w[\\w!=?():]+";
-    private static final String WORD_REGEX = "\\w[\\w!=?():\\n]+";
+    private static final String WORD_REGEX = "\\w[\\w!=?():]+";
+    //private static final String WORD_REGEX = "\\w[\\w!=?():\\n]+";
 
     // Write your code here!
 
@@ -22,7 +22,6 @@ public class LexemeParser extends AbstractTextParser {
     public void parse(AbstractTextComponent abstractTextComponent, String string) {
         String[] parts = string.split(LEXEME_REGEX);
         Pattern pattern = Pattern.compile(WORD_REGEX);
-        //Matcher matcher = pattern.matcher(string);
         Matcher matcher;
         SymbolLeaf symbolLeaf;
 
@@ -31,12 +30,11 @@ public class LexemeParser extends AbstractTextParser {
             if (matcher.find()) {
                 nextParser.parse(abstractTextComponent, str);
             } else {
-                char ch = string.charAt(0);
+                char ch = str.charAt(0);
                 symbolLeaf = new SymbolLeaf(TextComponentType.SYMBOL);
                 symbolLeaf.setChar(ch);
                 abstractTextComponent.add(symbolLeaf);
             }
         }
-        System.out.println();
     }
 }

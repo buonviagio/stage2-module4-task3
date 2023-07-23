@@ -28,19 +28,5 @@ public class WordParser extends AbstractTextParser {
             symbolLeaf.setChar(c);
             textComponent.add(symbolLeaf);
         }
-
-        /*
-        String[] symbols = string.split(TextComponentType.SYMBOL.getDelimiter());
-        textComponent = new TextComponent(TextComponentType.WORD);
-        abstractTextComponent.add(textComponent);
-
-        for (String symbol : symbols) {
-            char ch = symbol.charAt(0);
-            symbolLeaf = new SymbolLeaf(TextComponentType.WORD);
-            symbolLeaf.setChar(ch);
-            textComponent.add(symbolLeaf);
-        }
-
-         */
     }
 }
